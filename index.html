@@ -3,94 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WaveLink WiFi</title>
-
+    <title>Payment Successful - WaveLink WiFi</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f2f7ff;
-            text-align: center;
-            color: #222;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #eef5ff 0%, #dce8fa 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 15px;
         }
 
         .container {
-            max-width: 450px;
-            margin: 60px auto;
-            background: white;
-            padding: 35px 20px;
-            border-radius: 20px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 420px;
+            padding: 24px 20px;
+            text-align: center;
+            margin: auto;
         }
 
-        .logo {
-            width: 120px;
-            height: 120px;
+        /* Logo Styling */
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: #0066ff;
             border-radius: 50%;
-            margin-bottom: 15px;
-            object-fit: cover;
-        }
-
-        h1 {
-            margin: 10px 0;
-            font-size: 32px;
-        }
-
-        .success {
-            font-size: 22px;
-            font-weight: bold;
-            margin: 25px 0 10px;
-        }
-
-        .message {
-            font-size: 17px;
-            line-height: 1.6;
-        }
-
-        .button {
-            display: block;
-            margin-top: 25px;
-            padding: 15px;
-            background: #1677ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 32px;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.25);
         }
 
-        .footer {
-            margin-top: 25px;
+        .logo-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0b2545;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-subtitle {
             font-size: 14px;
-            color: #666;
+            color: #0066ff;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-top: -2px;
+        }
+
+        /* Success Message */
+        .status-circle {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px auto;
+            color: #10b981;
+            font-size: 24px;
+        }
+
+        .status-title {
+            color: #10b981;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .status-desc {
+            color: #4b5563;
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        /* Details Card */
+        .details-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 6px 16px;
+            margin-bottom: 20px;
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #edf2f7;
+            font-size: 14px;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #4b5563;
+            font-weight: 500;
+        }
+
+        .detail-label i {
+            color: #0066ff;
+            width: 16px;
+            text-align: center;
+        }
+
+        .detail-value {
+            color: #1f2937;
+            font-weight: 600;
+        }
+
+        /* Button */
+        .btn-submit {
+            width: 100%;
+            background: #0066ff;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .btn-submit:hover {
+            background: #0052cc;
+        }
+
+        /* Help Box */
+        .help-box {
+            background: #ebf5ff;
+            border-radius: 14px;
+            padding: 14px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .help-icon {
+            font-size: 26px;
+            color: #0066ff;
+        }
+
+        .help-text-title {
+            font-weight: 700;
+            color: #0066ff;
+            font-size: 14px;
+        }
+
+        .help-text-sub {
+            font-size: 12px;
+            color: #4b5563;
+            margin-bottom: 4px;
+        }
+
+        .help-phone {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #0066ff;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        .tagline {
+            color: #0066ff;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .secure-footer {
+            margin-top: 20px;
+            background: #091e42;
+            width: 100vw;
+            padding: 12px;
+            color: #ffffff;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            position: relative;
+            bottom: -20px;
         }
     </style>
 </head>
-
 <body>
 
-<div class="container">
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo-container">
+            <div class="logo-icon">
+                <i class="fa-solid fa-wifi"></i>
+            </div>
+            <div class="logo-title">WAVELINK</div>
+            <div class="logo-subtitle">— WiFi —</div>
+        </div>
 
-    <h1>📶 WaveLink WiFi</h1>
+        <!-- Success Message -->
+        <div class="status-circle">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div class="status-title">Payment Successful!</div>
+        <div class="status-desc">
+            Thank you for choosing WaveLink WiFi.<br>
+            Your internet access is now active.
+        </div>
 
-    <div class="success">
-        ✅ Payment Successful
+        <!-- Session Details -->
+        <div class="details-card">
+            <div class="detail-row">
+                <span class="detail-label"><i class="fa-solid fa-user"></i> Username</span>
+                <span class="detail-value">$(username)</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label"><i class="fa-regular fa-clock"></i> Package</span>
+                <span class="detail-value">Active Package</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label"><i class="fa-regular fa-calendar-days"></i> Start Time</span>
+                <span class="detail-value">$(session-time-left)</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label"><i class="fa-solid fa-hourglass-half"></i> Status</span>
+                <span class="detail-value" style="color: #10b981;">Connected</span>
+            </div>
+        </div>
+
+        <!-- Action Button -->
+        <a href="$(link-orig)" class="btn-submit">
+            <i class="fa-solid fa-globe"></i> Continue to Internet
+        </a>
+
+        <!-- Help Section -->
+        <div class="help-box">
+            <div class="help-icon">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+            <div>
+                <div class="help-text-title">Need Help?</div>
+                <div class="help-text-sub">Contact us on WhatsApp or Call</div>
+                <a href="https://wa.me/254111442002" class="help-phone">
+                    <i class="fa-brands fa-whatsapp"></i> 0111 442 002
+                </a>
+            </div>
+        </div>
+
+        <div class="tagline">Fast • Affordable • Reliable</div>
     </div>
 
-    <p class="message">
-        Thank you for choosing WaveLink WiFi.<br>
-        Your internet package has been activated.
-    </p>
-
-    <a class="button" href="#">
-        Continue to Internet
-    </a>
-
-    <div class="footer">
-        Fast • Affordable • Reliable
+    <!-- Bottom Bar -->
+    <div class="secure-footer">
+        <i class="fa-solid fa-lock"></i> Secure Connection
     </div>
-
-</div>
 
 </body>
-</html>a
+</html>
